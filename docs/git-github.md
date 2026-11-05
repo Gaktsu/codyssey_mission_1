@@ -31,7 +31,7 @@ $ git remote -v
 origin  https://github.com/Gaktsu/codyssey_mission_1.git (fetch)
 origin  https://github.com/Gaktsu/codyssey_mission_1.git (push)
 
-# 연동된 레포지터리에 모든 커밋을 업로드
+# 연동된 레포지터리에 없는 모 커밋을 업로드
 $ git push
 Enumerating objects: 24, done.
 Counting objects: 100% (24/24), done.
