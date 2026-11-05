@@ -6,16 +6,16 @@
 
 #### 선정한 베이스 이미지
 
-**이미지**는 **Ubuntu**를 사용
+- **이미지**는 **Ubuntu**를 사용
 
 #### 커스텀 이미지 구성 및 목적
 
-빌드할때 **nginx** 프로그램이 설치되도록 하였다. 
-**Ubuntu**에는 **다운로드 기능**이 존재하므로 다른 프로그램이 설치되는지 확인해보려고 하였다.
+- 빌드할때 **nginx** 프로그램이 설치되도록 하였다. 
+- **Ubuntu**에는 **다운로드 기능**이 존재하므로 다른 프로그램이 설치되는지 확인해보려고 하였다.
 
 #### 작성한 Dockerfile
 
-프로젝트 루트의 [Dockerfile](../Dockerfile)을 사용한다. (작성 후 링크 동작 확인)
+- 프로젝트 루트의 [Dockerfile](../Dockerfile)을 사용한다.
 
 ```dockerfile
 FROM ubuntu:24.04
@@ -37,7 +37,7 @@ CMD ["/bin/bash"]
 #### 이미지 빌드 및 컨테이너 실행 결과
 
 ```bash
-# Dockerfile에 기록한 것을 통해 nginx-install-ubuntu:1.4를 현재 경로에 이미지로 빌드 시도
+# Dockerfile에 기록한 것을 통해 nginx-install-ubuntu:1.4 이미지를 생성 (현재 경로를 기준으로 필요한 데이터를 사용함)
 $ sudo docker build -t nginx-install-ubuntu:1.4 .
 [+] Building 0.2s (8/8) FINISHED                                                                                                                                 docker:default
  => [internal] load build definition from Dockerfile                                                                                                                       0.0s
