@@ -25,3 +25,6 @@ replay_pid*
 
 # CSV file
 *.csv
+
+# env file
+*.env*
