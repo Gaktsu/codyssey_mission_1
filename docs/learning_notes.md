@@ -80,10 +80,7 @@
 
 ```bash
 $ sudo docker attach nginx
-dfds
-fasd
-fsa
-q
+abcd
 ^C2026/11/04 06:23:23 [notice] 1#1: signal 2 (SIGINT) received, exiting
 2026/11/04 06:23:23 [notice] 29#29: exiting
 2026/11/04 06:23:23 [notice] 29#29: exit
@@ -194,7 +191,7 @@ HEALTHCHECK --interval=30s --timeout=3s \
 COPY ./index.html /var/www/html/index.html
 
 # 컨테이너 시작 시 기본으로 실행할 명령
-CMD ["/bin/bash"]
+CMD ["nginx", "-g", "daemon off;"]
 ```
 
 --

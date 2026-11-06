@@ -61,9 +61,9 @@ $ sudo docker rm volume-connect-test
 # 이전에 생성한 파일 확인
 $ sudo docker run -it -v my-volume:/container-storate -p 4545:45 --name container-delete-after nginx-install-ubuntu:1.4
 root@2bcbd3df01a7:/# cd container-storate/
+root@2bcbd3df01a7:/container-storate# echo "hello-codyssey" > hello-codyssey.txt
 root@2bcbd3df01a7:/container-storate# cat hello-codyssey.txt 
-hellotouch hello-codyssey.txt! codyssey
-root@2bcbd3df01a7:/container-storate# 
+hello-codyssey
 
 # 다른 컨테이너에서 파일 삭제
 $ sudo docker run -it -v my-volume:/storage -p 6575:85 --name container-volume nginx-install-ubuntu:1.4

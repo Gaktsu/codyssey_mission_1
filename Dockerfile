@@ -11,4 +11,4 @@ HEALTHCHECK --interval=30s --timeout=3s \
 
 COPY ./index.html /var/www/html/index.html
     
-CMD ["/bin/bash"]
+CMD ["nginx", "-g", "daemon off;"]
