@@ -10,7 +10,11 @@ Linux CLI, Docker, Git/GitHub를 활용해 개발 환경을 구축하고, 명령
 
 | 디렉토리 | 역할 |
 | --- | --- |
-| ./docs | 
+| `docs` | 실습 결과, 학습 내용 및 트러블 슈팅 기록 |
+| `images` | 검증 스크린샷 보관 |
+| `Dockerfile` | 커스텀 Docker 이미지 구성 |
+| `index.html` | Nginx에서 제공할 웹 페이지 |
+| `README.md` | 미션 개요 및 상세 문서 링크 |
 
 ## 2. 실행 환경
 
@@ -50,7 +54,7 @@ Linux CLI, Docker, Git/GitHub를 활용해 개발 환경을 구축하고, 명령
 
 ## 6. 학습 내용 정리 (선택)
 
-- [6가지 목표 개념 정리](./docs/learning-notes.md) — 절대·상대 경로, 파일 권한, 커스텀 이미지, 포트 매핑, 볼륨, Git/GitHub
+- [6가지 목표 개념 정리](./docs/learning_notes.md) — 절대·상대 경로, 파일 권한, 커스텀 이미지, 포트 매핑, 볼륨, Git/GitHub
 
 ---
 

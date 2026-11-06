@@ -53,7 +53,8 @@
 
 #### 원인 확인
 
-- Dockerfile 변경하고 이미지 빌드를 안해서 발생하였다.
+- Dockerfile를 이용해 이미지를 다시 빌드하고 새 컨테이너를 실행한 결과 정상 화면이 나타났다.
+- 이전 이미지를 기반으로 생성된 컨테이너를 통해 접속 시도를 하였기 때문에 생긴 원인일 가능성이 높다고 판단했다.
 
 #### 해결 과정
 
@@ -70,13 +71,15 @@
 
 - 호스트에 설치된 nginx의 기본 설정 파일에 접근하여 확인한 결과 `80`포트를 받는다는 것을 확인하였다
 ```bash
-root@9f8de0b11add:/etc/nginx/sites-available# cat default
+$ cat /etc/nginx/sites-available/default
 server {
         listen 80 default_server;
         listen [::]:80 default_server;
+
+# 필요한 부분만 기록하였
 ```
 
-- 호스트의 nginx가 영향을 주는것이 아닌가 추측하였
+- 호스트의 nginx가 영향을 주는것이 아닌가 추측하였다 
 - 호스트의 nginx를 종료한 뒤 다시 `8080:80`로 매핑된 컨테이너를 실행하여 접속한 결과 nginx 기본 화면이 나타났다.
 
 ##### 세번째 시도

@@ -177,7 +177,7 @@ root@82e00a5070e6:/#
 FROM ubuntu:24.04
 
 # 빌드 중 다음 명령어를 실행
-RUN apt-get update -y && apt-get install nginx -y
+RUN apt-get update -y && apt-get install nginx -y && apt-get install curl -y
 
 # 환경 변수
 ENV codyssey=minseong

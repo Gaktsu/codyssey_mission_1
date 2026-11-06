@@ -1,6 +1,6 @@
 FROM ubuntu:24.04
 
-RUN apt-get update -y && apt-get install nginx -y
+RUN apt-get update -y && apt-get install nginx -y && apt-get install curl -y
 
 ENV codyssey=minseong
 
