@@ -31,7 +31,7 @@ HEALTHCHECK --interval=30s --timeout=3s \
 
 COPY ./index.html /var/www/html/index.html
 
-CMD ["nginx", "-g", "deamon off;"]
+CMD ["nginx", "-g", "daemon off;"]
 ```
 
 #### 이미지 빌드 및 컨테이너 실행 결과

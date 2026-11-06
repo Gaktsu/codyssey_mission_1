@@ -45,7 +45,7 @@
 - **index.html**을 포함하여 재빌드 한뒤 컨테이너를 생성해 실행하였다
 - 그 후 지정한 포트로 접근을 시도하였지만 **index.html**이 아닌 다른 화면이 나타났다
 
-![Nginx 기본 화면](../images/trouble_shooting/Nginx%20기본%20화면.png)
+![Nginx 기본 화면](../images/trouble_shooting/nginx%20기본%20화면.png)
 
 #### 원인 가설
 
@@ -88,5 +88,5 @@ server {
 
 #### 결과 검증
 
-![nginx 기본 화면](../images/trouble_shooting/Nginx%20기본%20화면.png)
+![nginx 기본 화면](../images/trouble_shooting/nginx%20기본%20화면.png)
 ![정상적으로 나온 화면](../images/trouble_shooting/정상적으로%20나온%20화면.png)
