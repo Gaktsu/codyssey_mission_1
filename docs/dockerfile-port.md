@@ -86,3 +86,5 @@ CONTAINER ID   IMAGE                      COMMAND       CREATED          STATUS 
 #### 접속 결과
 
 - 접속 주소: [http://localhost:8080]
+
+![포트 매핑 접속 성공](../images/trouble_shooting/정상적으로%20나온%20화면.png)

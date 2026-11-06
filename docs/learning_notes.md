@@ -166,15 +166,14 @@ root@82e00a5070e6:/#
 - `ubuntu`의 첫번째 프로세스는 `/bin/bash` 이다. 
 
 - `nginx`와 `ubuntu` 모두 bash 프로그램이 존재한
-
 --
 
-## Dockerfile으로 커스텀 이미지 만들기
+## Dockerfile로 커스텀 이미지 만들기
 
-- 프로젝트 루트의 [Dockerfile](../Dockerfile)을 사용한다. (작성 후 링크 동작 확인)
+- 프로젝트 루트의 [Dockerfile](../Dockerfile)을 사용한다.
 
 ```dockerfile
-# 이미지는 ubuntu:24.04으로 설정
+# 이미지는 ubuntu:24.04로 설정
 FROM ubuntu:24.04
 
 # 빌드 중 다음 명령어를 실행
@@ -183,18 +182,18 @@ RUN apt-get update -y && apt-get install nginx -y
 # 환경 변수
 ENV codyssey=minseong
 
-# 포트 매핑을 80임을 보여줌 (실제로 80으로 매핑을 해주지는 않음)
+# 컨테이너가 80번 포트를 사용할 것을 명시 (실제 매핑은 docker run -p 로 수행) 
 EXPOSE 80
 
-# localhost:80 으로 접속 시도 했지만 응답이 없을 경우 exit 1을 실행
-# 응답을 3초동안 기다리며, 실패 후 재시도까지 30초를 대기한다
+# localhost:80 으로 접속 시도 했지만 실패했을 경우 exit 1을 실행
+# 응답을 최대 3초동안 기다리며, 30초 간격으로 검사한다
 HEALTHCHECK --interval=30s --timeout=3s \
     CMD curl -f http://localhost:80/ || exit 1
 
 # 호스트에 있는 파일 index.html을 이미지의 디렉터리에 복사 붙여넣기
 COPY ./index.html /var/www/html/index.html
 
-# 첫번째 프로세스 설정
+# 컨테이너 시작 시 기본으로 실행할 명령
 CMD ["/bin/bash"]
 ```
 
@@ -229,5 +228,5 @@ root@b6e5ea264d3b:/bind-mount#
 
 ## Git vs GitHub
 
-- Git은 내 컴퓨터에서만 커밋 후 상태를 버전별로 저장하여 관리하는 도구이다
+- Git은 내 컴퓨터에서만 커밋 후 상태를 버전별로 저장하여 관리하거나 원격 저장소에 커밋 이력을 주고 받을 수 있도록 하는 도구
 - GitHub은 프로젝트 폴더 내 디렉터리와 파일을 클라우드 저장을 하여 여러 사람이 보고, 수정하고, 협업할 수 있도록 하는 플랫폼이다 

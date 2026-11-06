@@ -49,20 +49,41 @@
 
 #### 원인 가설
 
-- nginx의 기본 html이 나타난것을 보아 `8080:80` 으로 포트를 매핑하여 포트 충돌이 발생하였다
-- 즉, 컨테이너의 포트가 아닌 nginx로의 포트로 연결되었다
+- 예상되는 원인이 떠오르지 않았다
 
 #### 원인 확인
 
-```markdown
-`http://localhost:8080` 으로 접속한 결과 nginx 기본 html이 나타나는 증상은 호스트에 nginx가 깔려있기 때문이었다
-결국에는 컨테이너 내부의 nginx에 접근한 것이 아니었다
-```
+- Dockerfile 변경하고 이미지 빌드를 안해서 발생하였다.
 
 #### 해결 과정
 
-- 호스트에 설치되어 있는 nginx를 제거하고 다시 `http://localhost:8080`으로 접근을 하면 빌드 때 같이 포함한 index.html이 나타나는 것을 확인하였다 
+##### 첫번째 시도
+
+- 포트 충돌을 고려하여 `9876:98`으로 포트를 매핑한 새로운 컨테이너를 생성하였다
+- `http://localhost:9876`으로 접속하였지만 빈 페이지를 주었다는 오류가 발생하였다
+    - 반대로 `9876`이 아닌 다른 포트로 접속하면 연결할 수 없다는 오류가 발생하였다
+
+![빈 페이지 응답 오류](../images/trouble_shooting/빈%20페이지%20응답%20화면.png)
+![연결 안됨 응답 오류](../images/trouble_shooting/연결%20안됨%20응답%20화면.png)
+
+##### 두번째 시도
+
+- 호스트에 설치된 nginx의 기본 설정 파일에 접근하여 확인한 결과 `80`포트를 받는다는 것을 확인하였다
+```bash
+root@9f8de0b11add:/etc/nginx/sites-available# cat default
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+```
+
+- 호스트의 nginx가 영향을 주는것이 아닌가 추측하였
+- 호스트의 nginx를 종료한 뒤 다시 `8080:80`로 매핑된 컨테이너를 실행하여 접속한 결과 nginx 기본 화면이 나타났다.
+
+##### 세번째 시도
+
+- Dockerfile 을 통해 빌드를 다시한 뒤 컨테이너를 생성하고 실행한 결과 의도한 화면이 뜨는것을 확인하였다
 
 #### 결과 검증
 
+![nginx 기본 화면](../images/trouble_shooting/Nginx%20기본%20화면.png)
 ![정상적으로 나온 화면](../images/trouble_shooting/정상적으로%20나온%20화면.png)
